@@ -1,0 +1,33 @@
+---
+import { SITE } from '../lib/site';
+---
+
+<header class="site-header">
+  <a href="/" class="site-header__name">{SITE.logo}</a>
+
+  <nav class="site-header__quick">
+    <a href="/">home</a>
+    <span aria-hidden="true"></span>
+    <a href="/blog/">blog</a>
+    <span aria-hidden="true"></span>
+    <a href="/works/">works</a>
+  </nav>
+
+  <button type="button" class="hamburger" id="hamburger" aria-expanded="false" aria-controls="site-nav">
+    <span class="hamburger__line"></span>
+    <span class="hamburger__line"></span>
+    <span class="hamburger__line"></span>
+    <span class="visually-hidden">メニュー</span>
+  </button>
+</header>
+
+<script>
+  // ハンバーガーメニューの開閉(モバイル)
+  const hamburger = document.getElementById('hamburger');
+  const nav = document.getElementById('site-nav');
+
+  hamburger?.addEventListener('click', () => {
+    const isOpen = nav?.classList.toggle('is-open');
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+  });
+</script>

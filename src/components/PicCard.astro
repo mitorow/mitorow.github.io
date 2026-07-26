@@ -1,0 +1,59 @@
+---
+/**
+ * ブロック全体が画像で、その上に文字を重ねるカード。
+ * 外周の色(color)が縁取りになります。
+ *
+ * 体裁の変え方:
+ *   ratio  … 画像の縦横比   ratio-21 / ratio-169(既定) / ratio-32 / ratio-43 / ratio-11
+ *   cap    … 文字の位置     cap-bottom(既定) / cap-top / cap-center
+ *   frame  … 縁取りの太さ   "10px" など
+ *   scrim  … 文字下の膜の濃さ 0〜1(0で透明)
+ */
+interface Props {
+  href: string;
+  label: string;
+  note?: string;
+  color?: string;
+  image?: string | null;
+  external?: boolean;
+  ratio?: string;
+  cap?: string;
+  frame?: string;
+  scrim?: number;
+}
+
+const {
+  href,
+  label,
+  note,
+  color = 'chip-0',
+  image,
+  external = false,
+  ratio = 'ratio-169',
+  cap = 'cap-bottom',
+  frame,
+  scrim,
+} = Astro.props;
+
+const style = [
+  frame ? `--frame:${frame}` : '',
+  scrim !== undefined ? `--scrim:${scrim}` : '',
+]
+  .filter(Boolean)
+  .join(';');
+---
+
+<a
+  class:list={['card', 'card--pic', color, ratio, cap]}
+  href={href}
+  style={style || undefined}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener' : undefined}>
+  <div class="card__pic" style={image ? `background-image:url('${image}')` : undefined}>
+    {!image && <span class="card__initial">{[...label][0]}</span>}
+    <span class="card__caption">
+      {label}
+      {note && <small>{note}</small>}
+    </span>
+  </div>
+</a>

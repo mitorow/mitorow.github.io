@@ -1,0 +1,16 @@
+{
+  "name": "mitorow-site",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.3",
+    "@rollup/plugin-yaml": "^5.0.0",
+    "astro": "^7.1.3"
+  }
+}

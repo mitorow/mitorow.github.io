@@ -1,0 +1,47 @@
+---
+import Tag from './Tag.astro';
+
+interface Item {
+  id: string;
+  data: { title: string; tags: string[]; thumbnail?: string };
+}
+
+interface Props {
+  items: Item[];
+  section: string;
+}
+
+const { items, section } = Astro.props;
+---
+
+<div class="bento">
+  {
+    items.length === 0 ? (
+      <p class="empty w6">まだ登録がありません。</p>
+    ) : (
+      items.map((item, i) => (
+        <a class="item-card w2" href={`/${section}/${item.id}/`}>
+          <div class:list={['item-card__thumb', !item.data.thumbnail && `chip-${i % 8}`]}>
+            {item.data.thumbnail ? (
+              <img src={item.data.thumbnail} alt={item.data.title} />
+            ) : (
+              <span class="item-card__initial">{[...item.data.title][0]}</span>
+            )}
+          </div>
+          <div class="item-card__body">
+            <h2 class="item-card__title">{item.data.title}</h2>
+            {item.data.tags.length > 0 && (
+              <ul class="tag-list">
+                {item.data.tags.map((tag) => (
+                  <li>
+                    <Tag tag={tag} />
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </a>
+      ))
+    )
+  }
+</div>

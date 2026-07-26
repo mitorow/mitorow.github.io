@@ -1,0 +1,19 @@
+---
+import profile from '../data/profile.yml';
+import { SITE } from '../lib/site';
+
+const { hero_title, hero_lead, hero_image } = profile as {
+  hero_title?: string;
+  hero_lead?: string;
+  hero_image?: string | null;
+};
+---
+
+<section
+  class:list={['hero', hero_image && 'hero--photo']}
+  style={hero_image ? `background-image:url('${hero_image}')` : undefined}>
+  <div class="hero__inner">
+    <h1 class="hero__title">{hero_title ?? SITE.title}</h1>
+    {hero_lead && <p class="hero__lead">{hero_lead}</p>}
+  </div>
+</section>

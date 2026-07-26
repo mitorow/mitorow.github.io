@@ -1,0 +1,28 @@
+# トップページのヒーローとプロフィールカードの内容
+hero_title: Welcome!
+hero_lead: ここにサイトのキャッチコピーを書きます
+
+# ヒーローの背景画像。
+# assets/img/ に画像を置いて、そのパスをここに書くと背景になります。
+# 例: hero_image: /assets/img/hero.jpg
+# 未設定のあいだは単色(site.css の --hero-fallback)で表示されます。
+hero_image: /assets/img/Home関連/hero.png
+
+name: mitorow
+bio: |
+  こんにちは。mitorowと申します。
+  何をしている人か、何が好きか、何を作っているかなど。
+
+# プロフィールカードに並ぶ小さなタグ(自由に増減できます)
+facts:
+  - 電気通信大学 情報学専攻
+  - 長崎県出身
+  - オタク
+
+# 遊び用のASCIIアート(不要ならこの項目ごと消してください)
+ascii: |
+  　　∧＿∧
+  　（　´∀｀）　＜ ここに好きなAAを貼る
+  　（　　　　 ）
+  　　｜｜　|
+  　　（__)__)

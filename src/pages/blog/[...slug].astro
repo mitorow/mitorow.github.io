@@ -1,0 +1,44 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Tag from '../../components/Tag.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const date = post.data.date;
+const formatted = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
+---
+
+<BaseLayout title={post.data.title}>
+  <article class="sheet">
+    <a class="breadcrumb" href="/blog/">← Blog</a>
+
+    <p class="article__date">{formatted}</p>
+    <h1 class="article__title">{post.data.title}</h1>
+
+    {
+      post.data.tags.length > 0 && (
+        <ul class="tag-list">
+          {post.data.tags.map((tag) => (
+            <li>
+              <Tag tag={tag} />
+            </li>
+          ))}
+        </ul>
+      )
+    }
+
+    <div class="article__body">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,67 @@
+---
+import Tag from './Tag.astro';
+
+interface Props {
+  title: string;
+  tags: string[];
+  thumbnail?: string;
+  links: { label: string; url: string }[];
+  images: string[];
+  backHref: string;
+  backLabel: string;
+}
+
+const { title, tags, thumbnail, links, images, backHref, backLabel } = Astro.props;
+---
+
+<article class="sheet">
+  <a class="breadcrumb" href={backHref}>← {backLabel}</a>
+
+  <h1 class="article__title">{title}</h1>
+
+  {
+    tags.length > 0 && (
+      <ul class="tag-list">
+        {tags.map((tag) => (
+          <li>
+            <Tag tag={tag} />
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  {
+    thumbnail && (
+      <div class="item__thumb">
+        <img src={thumbnail} alt={title} />
+      </div>
+    )
+  }
+
+  <div class="article__body">
+    <slot />
+  </div>
+
+  {
+    links.length > 0 && (
+      <div class="item__links">
+        {links.map((link) => (
+          <a class="button" href={link.url} target="_blank" rel="noopener">
+            {link.label}
+          </a>
+        ))}
+      </div>
+    )
+  }
+
+  {
+    images.length > 0 && (
+      <div class="item__gallery">
+        {images.map((image) => (
+          <img src={image} alt={`${title}のスクリーンショット`} />
+        ))}
+      </div>
+    )
+  }
+</article>

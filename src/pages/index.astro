@@ -1,0 +1,129 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PicCard from '../components/PicCard.astro';
+import { SECTIONS, formatDate } from '../lib/site';
+import profile from '../data/profile.yml';
+import links from '../data/links.yml';
+import skills from '../data/skills.yml';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
+const p = profile as {
+  name: string;
+  bio?: string;
+  facts?: string[];
+  ascii?: string;
+};
+const linkCards = links as {
+  label: string;
+  note?: string;
+  url: string;
+  color?: string;
+  image?: string | null;
+}[];
+const skillTiles = skills as { name: string; note?: string; color?: string }[];
+---
+
+<BaseLayout title="Home" hero>
+  <div class="home-layout">
+    {/* ============ 左側: 文章のカード ============ */}
+    <div class="home-col home-col--main">
+      {/* プロフィール(内容は src/data/profile.yml で編集) */}
+      <div class="card">
+        <span class="label">About Me</span>
+        <div class="profile__name"><b>{p.name}</b></div>
+        <div class="profile__bio">
+          {p.bio?.split('\n').filter(Boolean).map((line) => <p>{line}</p>)}
+        </div>
+        {
+          p.facts && p.facts.length > 0 && (
+            <ul class="profile__facts">
+              {p.facts.map((fact) => (
+                <li>{fact}</li>
+              ))}
+            </ul>
+          )
+        }
+      </div>
+
+      {/* 最新記事 */}
+      <div class="card">
+        <span class="label">Blog</span>
+        <ul class="mini-posts">
+          {
+            posts.length === 0 ? (
+              <li>
+                <a href="/blog/">まだ記事がありません</a>
+              </li>
+            ) : (
+              posts.slice(0, 5).map((post) => (
+                <li>
+                  <a href={`/blog/${post.id}/`}>
+                    <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+                    <span>{post.data.title}</span>
+                  </a>
+                </li>
+              ))
+            )
+          }
+        </ul>
+      </div>
+
+      {/* スキル(内容は src/data/skills.yml で編集) */}
+      {
+        skillTiles.length > 0 && (
+          <div class="card">
+            <span class="label">Skills</span>
+            <div class="tiles">
+              {skillTiles.map((skill) => (
+                <div class:list={['tile', skill.color ?? 'chip-0']}>
+                  <b>{skill.name}</b>
+                  {skill.note && <small>{skill.note}</small>}
+                </div>
+              ))}
+            </div>
+          </div>
+        )
+      }
+
+      {/* ASCIIアート(不要なら src/data/profile.yml の ascii を消してください) */}
+      {
+        p.ascii && (
+          <div class="card card--dark">
+            <span class="label">AA</span>
+            <pre class="ascii">{p.ascii}</pre>
+          </div>
+        )
+      }
+
+      {/* 文章のカードを増やしたいときはここに .card を足してください */}
+    </div>
+
+    {/* ============ 右側: 画像のカード ============ */}
+    <div class="home-col home-col--side">
+      {/* リンク(内容は src/data/links.yml で編集) */}
+      {
+        linkCards.map((link) => (
+          <PicCard
+            href={link.url}
+            external
+            label={link.label}
+            note={link.note}
+            color={link.color}
+            image={link.image}
+          />
+        ))
+      }
+
+      {/* 作ったもの3種への入口(内容は src/data/sections.yml で編集) */}
+      {
+        SECTIONS.map((s) => (
+          <PicCard href={`/${s.slug}/`} label={s.label} note={s.note} color={s.color} image={s.image} />
+        ))
+      }
+    </div>
+  </div>
+</BaseLayout>

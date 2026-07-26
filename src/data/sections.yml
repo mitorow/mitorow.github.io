@@ -1,0 +1,20 @@
+# Works の下にぶら下がる3つのセクション。
+# ナビの並び順と、トップページのカードに使われます。
+# image を書くとカードの中身がその画像になります(推奨サイズ 800x600px / 4:3)。
+- slug: works
+  label: Service
+  note: 作ったサイト・アプリ
+  color: chip-4
+  image: /assets/img/sample.png
+
+- slug: arts
+  label: Arts
+  note: 作った画像・動画
+  color: chip-2
+  image: /assets/img/sample.png
+
+- slug: games
+  label: Games
+  note: 作ったゲーム
+  color: chip-3
+  image: /assets/img/sample.png

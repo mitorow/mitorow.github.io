@@ -1,0 +1,25 @@
+# トップページの Skills タイル(使える技術・触っているもの)
+# name に技術名、note に一言、color に chip-0〜chip-7 を指定します
+- name: 技術名
+  note: 一言メモ
+  color: chip-0
+
+- name: 技術名
+  note: 一言メモ
+  color: chip-6
+
+- name: 技術名
+  note: 一言メモ
+  color: chip-3
+
+- name: 技術名
+  note: 一言メモ
+  color: chip-4
+
+- name: 技術名
+  note: 一言メモ
+  color: chip-1
+
+- name: 技術名
+  note: 一言メモ
+  color: chip-2
