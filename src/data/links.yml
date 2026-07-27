@@ -2,12 +2,12 @@
 # color は chip-0〜chip-7 が使えます(青/紫/桃/橙/緑/黄/水/赤)
 # image を書くとカードの中身がその画像になります(推奨サイズ 800x600px / 4:3)
 - label: GitHub
-  url: https://github.com/toarutoa
+  url: https://github.com/mitorow
   color: chip-1
-  image: /assets/img/sample.png
+  image: /assets/img/Home関連/github_logo.png
 
 - label: X (Twitter)
   note: "@Mitorow_uec23"
   url: https://x.com/Mitorow_uec23
   color: chip-0
-  image: /assets/img/sample.png
+  image: /assets/img/Home関連/twitter_logo.png
