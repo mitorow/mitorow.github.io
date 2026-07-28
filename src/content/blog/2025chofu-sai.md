@@ -1,5 +1,5 @@
 ---
-title: コミケにサークルとして参加してきた！(C108)
+title: 2025年 調布祭
 date: 2025-11-16
 tags: [日記]
 thumbnail: /assets/img/sample.png
