@@ -6,8 +6,14 @@
   color: chip-1
   image: /assets/img/Home関連/github_logo.png
 
-- label: X (Twitter)
+- label: Twitter (X)
   note: "@Mitorow_uec23"
   url: https://x.com/Mitorow_uec23
   color: chip-0
   image: /assets/img/Home関連/twitter_logo.png
+
+- label: YouTube
+  note: "みとろーchannel"
+  url: https://www.youtube.com/@mitorow
+  color: chip-7
+  image: /assets/img/Home関連/youtube_logo.png
