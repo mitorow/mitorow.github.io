@@ -1,9 +1,10 @@
 ---
 title: VR焼肉屋シミュレーター
 tags: [ゲーム]
-thumbnail: /assets/img/Games関連/yakiniku.JPG
+thumbnail: /assets/img/Games関連/yakiniku.png
 images:
   - /assets/img/Games関連/yakinikuサムネ.png
+  - /assets/img/Games関連/HowToPlay.png
 links:
   - label: ダウンロード
     url: https://github.com/mitorow/toarutoa.github.io/releases/download/v1.0.0/yakinikuya_v1.0.0.zip
