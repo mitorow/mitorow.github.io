@@ -1,7 +1,7 @@
 ---
 title: VR焼肉屋シミュレーター
 tags: [ゲーム]
-thumbnail: /assets/img/Games関連/yakiniku.png
+thumbnail: /assets/img/Games関連/yakiniku.JPG
 images:
   - /assets/img/Games関連/yakinikuサムネ.png
   - /assets/img/Games関連/HowToPlay.png
