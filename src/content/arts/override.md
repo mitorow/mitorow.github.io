@@ -2,7 +2,7 @@
 title: 合作MV【オーバーライド】
 tags: [映像]
 thumbnail: /assets/img/Arts関連/オーバーライド.png
-images:
+images: []
 ---
 
 <!-- ここに作品の紹介文を書きます -->
