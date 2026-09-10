@@ -15,5 +15,50 @@ const { hero_title, hero_lead, hero_image } = profile as {
   <div class="hero__inner">
     <h1 class="hero__title">{hero_title ?? SITE.title}</h1>
     {hero_lead && <p class="hero__lead">{hero_lead}</p>}
+    <p class="hero__visitor" data-visitor-counter hidden aria-live="polite">
+      あなたは <strong data-visitor-count></strong> 人目の訪問者です
+    </p>
   </div>
 </section>
+
+<script>
+  const counter = document.querySelector<HTMLElement>('[data-visitor-counter]');
+  const count = counter?.querySelector<HTMLElement>('[data-visitor-count]');
+  const storageKey = 'mitorow-com-visitor-counted';
+  const apiKey = 'mitorow-com-home-visitors-v1';
+
+  if (counter && count) {
+    let counted = false;
+
+    try {
+      counted = localStorage.getItem(storageKey) === 'true';
+    } catch {
+      // localStorage が使えない場合は、新しい訪問として数えます。
+    }
+
+    const action = counted ? 'get' : 'hit';
+
+    fetch(`https://countapi.mileshilliard.com/api/v1/${action}/${apiKey}`)
+      .then((response) => {
+        if (!response.ok) throw new Error('Visitor counter is unavailable');
+        return response.json();
+      })
+      .then((data: { value?: number }) => {
+        if (!Number.isFinite(data.value)) return;
+
+        count.textContent = new Intl.NumberFormat('ja-JP').format(data.value as number);
+        counter.hidden = false;
+
+        if (!counted) {
+          try {
+            localStorage.setItem(storageKey, 'true');
+          } catch {
+            // 表示できていれば、保存に失敗しても処理は続けます。
+          }
+        }
+      })
+      .catch(() => {
+        // 外部サービスに接続できないときは、カウンターだけ非表示にします。
+      });
+  }
+</script>
