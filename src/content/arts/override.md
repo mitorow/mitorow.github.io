@@ -1,8 +1,11 @@
 ---
-title: 合作MV【オーバーライド】
+title: 【合作MV】オーバーライド
 tags: [映像]
 thumbnail: /assets/img/Arts関連/オーバーライド.png
 images: []
+links:
+  - label: 見に行く
+    url: https://youtu.be/8qwgy0KBwuc?si=Oc0V5ok-mLAPJIrS
 ---
 
 <!-- ここに作品の紹介文を書きます -->

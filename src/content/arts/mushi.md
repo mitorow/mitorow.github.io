@@ -1,5 +1,5 @@
 ---
-title: MIKUEC2024【ムシ】
+title: 【MIKUEC2024】ムシ
 tags: [映像]
 thumbnail: /assets/img/Arts関連/ムシ.png
 images: []
