@@ -3,18 +3,16 @@
 # image を書くとカードの中身がその画像になります(推奨サイズ 800x600px / 4:3)。
 - slug: works
   label: Service
-  note: 作ったサイト・アプリ
   color: chip-4
-  image: /assets/img/sample.png
+  image: /assets/img/Home関連/Service.png
 
 - slug: arts
   label: Arts
-  note: 作った画像・動画
-  color: chip-2
-  image: /assets/img/sample.png
+  color: chip-3
+  image: /assets/img/Home関連/Arts.png
 
 - slug: games
   label: Games
-  note: 作ったゲーム
-  color: chip-3
-  image: /assets/img/sample.png
+  # note: 作ったゲーム
+  color: chip-2
+  image: /assets/img/Home関連/Games.png
